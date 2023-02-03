@@ -8,7 +8,7 @@ input{
     box-sizing: border-box;
 }
 
-button{
+.b{
     width: 100%;
     background-color: #994141;
     color: white;
@@ -19,7 +19,7 @@ button{
     cursor: pointer;
 }
 
-button:hover {
+.b:hover {
 background-color: #e29b9b;
 }
 
