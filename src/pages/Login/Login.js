@@ -6,6 +6,7 @@ export const Login = () => {
     const initialValues = { email: "", password: "" };
     const [formValues, setFormValues] = useState(initialValues);
     const [formErrors, setFormErrors] = useState({});
+    const [passwordType, setPasswordType] = useState("password");
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -38,12 +39,13 @@ export const Login = () => {
         return errors;
       };
 
-      let flag = "text";
-      let flag2 = true;
-
-      const change = () => {
-        flag = "password"
-        flag2 = !flag2
+      const togglePassword =()=>{
+        if(passwordType==="password")
+        {
+          setPasswordType("text")
+          return;
+        }
+        setPasswordType("password")
       }
 
 
@@ -66,14 +68,15 @@ export const Login = () => {
                 <label htmlFor="password" className="text-dark fs-3">Password</label>
                 <div className="form-group mt-4 d-flex flex-row">
                 <input
-                    type={`${flag2 ? "password" : "text"}`}
+                    type={passwordType}
                     name="password"
                     value={formValues.password}
                     onChange={handleChange}
                     className="form-control"
-                    // onClick={change()}
                 />
-                <i className={`${flag === "password" ? 'fa-solid fa-eye fs-5 mt-3 ms-2' : 'fa-solid fa-eye-slash  fs-5 mt-3 ms-2' }`} id="icon"  onClick={change()}></i>
+                <span className="" onClick={togglePassword}>
+                  { passwordType==="password" ? <i className="fa-solid fa-eye-slash  fs-5 mt-3 ms-2"></i> : <i className="fa-solid fa-eye fs-5 mt-3 ms-2"></i> }
+                </span>
                 </div>
                 <p className="text-danger mt-2 fs-5">{formErrors.password}</p>
                 <button type="submit" className="btn btn-danger fs-5 mt-4 b">submit</button>
