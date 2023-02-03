@@ -77,10 +77,10 @@ function Signup(props){
 
                 setErros({
                     ...error,
-                    confirmPassword: e.target.value.length === 0 ? "confirm password is required" : e.target.value.length !== 8 ? "not match" : null
-                })
+                    confirmPassword: e.target.value.length === 0 ? "confirm password is required" : 
+                    !e.target.value.match(userData.password) ? "not match" : null
+                })                    
             }
-
         }
 
         const submitData = (e) => {
@@ -137,7 +137,7 @@ function Signup(props){
                 <p className="text-danger mt-2 fs-5">  {error.confirmPassword}  </p>
 
                 </div>
-                <button  className="btn btn-danger fs-5 mt-4" type="submit">Submit</button>
+                <button  className="btn btn-danger fs-5 mt-4 b" type="submit">Submit</button>
             </form> 
             
         </div>
